@@ -14,7 +14,7 @@ pipeline {
                     ls -la
                     node --version
                     npm --version
-                    sudo chown -R $(id -u):$(id -g) /.npm
+                    chown -R $(id -u):$(id -g) /.npm
                     rm -rf node_modules && npm ci
                     npm ci
                     npm run build
