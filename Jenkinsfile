@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Fix Permissions') {
-    steps {
-        sh 'sudo chown -R $(id -u):$(id -g) /.npm'
-    }
-}
-
         stage('Build') {
             agent {
                 docker {
@@ -21,6 +15,7 @@ pipeline {
                     node --version
                     npm --version
                     npm ci
+                    npm install
                     npm run build
                     ls -la
                 '''
