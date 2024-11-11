@@ -14,8 +14,8 @@ pipeline {
                     ls -la
                     node --version
                     npm --version
+                    sh 'rm -rf node_modules && npm ci'
                     npm ci
-                    npm install
                     npm run build
                     ls -la
                 '''
