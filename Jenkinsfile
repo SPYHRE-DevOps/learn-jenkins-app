@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Fix Permissions') {
+    steps {
+        sh 'sudo chown -R $(id -u):$(id -g) /.npm'
+    }
+}
+
         stage('Build') {
             agent {
                 docker {
