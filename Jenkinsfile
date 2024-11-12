@@ -23,12 +23,11 @@ pipeline {
         }
 
         stage('Test') {
-            agent {
+                        agent {
                 docker {
                     image 'node:18-alpine'
+                    args '-u 0'
                     reuseNode true
-                }
-            }
 
             steps {
                 sh '''
@@ -36,5 +35,6 @@ pipeline {
                     npm test
                 '''
             }
+        }
     }
 }
